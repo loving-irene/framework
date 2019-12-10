@@ -1,4 +1,4 @@
-## **目录结构**
+##**目录结构**
 -   APP
     -   admin
         -   controller
@@ -12,14 +12,14 @@
 | controller | 控制器文件夹，存放控制器文件 |
 | index.php  | 具体的控制器文件             |
 ---
-## **Controller**
+##**Controller**
 
 此处 controller 这个文件夹也可以不要，因为模块下的 controller 有且只有一个，不会有其他的分支，这样的前提条件下，层次结构可以少一层。
 
 拿掉 controller，将 index.php 这样的的控制器文件直接放在模块目录下，并没有什么问题。如果项目中有实际需要，需要将控制器进行一些区分，这里如果有这一层 controller 就显得非常重要了。
 
 ---
-## 新的目录结构
+##新的目录结构
 -   APP
     -   admin
         -   index.php
