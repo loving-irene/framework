@@ -10,7 +10,7 @@ include('./system/function.php');
 // 解析数组拿到路径
 \system\url::analyse($_SERVER);
 
-$obj = new url();
+$obj = new \system\url();
 // 加载指定文件
 include(APP.$obj->get('path').EXT);
 
