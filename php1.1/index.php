@@ -11,8 +11,11 @@ include('./system/function.php');
 \system\url::analyse($_SERVER);
 
 $obj = new \system\url();
+
+$a = 10;
 // 加载指定文件
 include(APP.$obj->get('path').EXT);
+use \app\admin\controller\index;
 
 $class_name = $obj->get('controller');
 $func = $obj->get('func');
