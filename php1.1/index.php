@@ -12,13 +12,13 @@ include('./system/function.php');
 
 $obj = new \system\url();
 
-$a = 10;
 // 加载指定文件
 include(APP.$obj->get('path').EXT);
-use \app\admin\controller\index;
+include(APP.'admin/controller/test.php');
 
 $class_name = $obj->get('controller');
 $func = $obj->get('func');
 
-$app = new $class_name();
+$namesapce = 'app\admin\controller\\'.$class_name;
+$app = new $namesapce;
 $app->$func();

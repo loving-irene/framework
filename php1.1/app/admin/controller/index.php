@@ -1,6 +1,8 @@
 <?php
 namespace app\admin\controller;
 
+use app\admin\controller\test;
+
 class index
 {
     /**
@@ -8,6 +10,7 @@ class index
      */
     public function fun1()
     {
-        vde(22);
+        $obj = new test;
+        vde($obj->fun1());
     }
 }
