@@ -4,6 +4,11 @@ this is a new version,add more feature.
 
 - add namespace
 - add folder(model & view)
+    >build MVC
+- add vendor
+    >use template engine smarty
+- update constant.php
+    >add more constant
 
 ## Infomation
 
