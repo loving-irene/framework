@@ -3,6 +3,7 @@
 this is a new version,add more feature.
 
 - add namespace
+- add folder(model & view)
 
 ## Infomation
 

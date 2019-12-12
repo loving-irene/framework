@@ -1,28 +1,61 @@
-##**目录结构**
--   APP
-    -   admin
-        -   controller
-            -   index.php
+## Change Log
 
-目录结构相当清晰的说明了 APP 文件夹下的层次结构设计
+- `index.php` 新增命名空间 `app\admin\controller`
+>对照文件目录，可以发现命名空间和框架的目录结构一致。这样设计的目的，是为了方便使用，能够根据命名空间找到对应的文件，这一点在工程实践中非常有效。
 
-| 描述       | 说明                         |
-| :--------- | :--------------------------- |
-| admin      | 模块名,可创建更多的模块      |
-| controller | 控制器文件夹，存放控制器文件 |
-| index.php  | 具体的控制器文件             |
----
-##**Controller**
+- `index.php` 使用 `use` 引入了新的类
 
-此处 controller 这个文件夹也可以不要，因为模块下的 controller 有且只有一个，不会有其他的分支，这样的前提条件下，层次结构可以少一层。
+    <?php
+    ...
+    use app\admin\controller\test;
+    
+    class index
+    {
+        /**
+        * 方法1
+        * 方法体和 1.0 demo 不一样
+        */
+        public function fun1()
+        {
+            $obj = new test;
+            vde($obj->fun1());
+        }
+    }
 
-拿掉 controller，将 index.php 这样的的控制器文件直接放在模块目录下，并没有什么问题。如果项目中有实际需要，需要将控制器进行一些区分，这里如果有这一层 controller 就显得非常重要了。
+#### Use的使用
 
----
-##新的目录结构
--   APP
-    -   admin
-        -   index.php
-        -   ...
+`use` 搭配命名空间使用，其所起到的作用就是给 `qulified name/full qulified name` 起别名，将一个写法 `$obj = new app\admin\controller\test` 变成 `$obj = new test`。如上诉例子一样，`fun1` 中之所以能够如下使用
 
-不同的设计背后对应的是不同的需求，很多时候不理解一些框架的设计和做法，主要是框架设计时的目标场景和我们实际面对的并不一样，而且流行的框架需要覆盖相当广的受众面，大而全难以避免，具体到各个项目来看，框架环境和预设的应用环境中的相当一部分内容其实是不需要的。
+    <?php
+    ...
+    public function fun1()
+    {
+        $obj = new test;
+        vde($obj->fun1());
+    }
+
+其前置条件是，在 `index.php` 文件开头作了如下动作
+
+    <?php
+    ...
+    use app\admin\controller\test;
+
+进一步往下，`use` 同样有前提条件，被 `use` 的类必须先被引入，正如我们在 INDEX.PHP 文件说明中所指明的那样
+
+    **index.php**
+    <?php
+    ...
+    include(APP.'admin/controller/test.php');
+
+这里 `include(APP.'admin/controller/test.php');` 的意义就是为了应用文件夹 `app` 下的 `index.php` 中能够 `use app\admin\controller\test`。所以，在 INDEX.PHP 文件说明中我说
+
+>`include(APP.'admin/controller/test.php');`
+>配合应用控制器 `index.php` 中的 `use` 使用，放在控制器说明中说明
+这里的 `include(APP.'admin/controller/test.php');` 只是 `demo` 中的写法，任何非 `demo` 的框架中都要使用自动加载，毕竟生产框架需要加载的类文件往往都是几十上百的数量。
+
+- `app\admin\controller` 文件夹下新增了一个文件 `test.php`
+>到这里，项目应用是如何从0开始扩展的，其实已经能够看出一个雏形，需要做的只是根据业务需求，在 `controller` 文件夹下创建更多的文件即可。
+
+- `app\admin` 文件下增加了两个文件夹 `model` 和 `view`
+>正如 1.0 版本中的目标所说，这个 `demo` 是设计一个 `MVC` 架构的框架，所以，创建了这两个文件夹。其起到的作用是一个更细化的分层，有点类似大公司流水线的岗位设计，很细分。按照我们前面的描述，整个业务逻辑在 `controller` 文件夹下的单一文件内其实也可以实现，这就类似小公司的岗位设计，并不像大公司那么细分，两种方案都可以实现需求。
+>区别在于更细化的设计，能够达到经常听到的“高内聚，低耦合”的效果，一个“零件”坏了，并不影响其他的零件，同时划分成更小的单位，就可以进行“并发操作”，将一个任务分给多个人，各自做一部分，最后进行合并，很显然和单人单文件的作业方式相比，好处时候显而易见的。
