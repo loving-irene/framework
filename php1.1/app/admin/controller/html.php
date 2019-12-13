@@ -10,4 +10,16 @@ class html{
     {
         return include(VIEW.'index/test.html');
     }
+
+    /**
+     * 使用 smarty 模板引擎
+     */
+    public function html_smarty()
+    {
+        $smarty = new \Smarty();
+        $smarty->assign('number',40);
+        $smarty->assign('array',[2,3,4]);
+        $smarty->assign('obj',new \stdClass());
+        return $smarty->display(VIEW.'index/html_smarty.tpl');
+    }
 }

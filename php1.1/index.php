@@ -16,6 +16,10 @@ $obj = new \system\url();
 include(APP.$obj->get('path').EXT);
 include(APP.'admin/controller/test.php');
 
+// 加载第三方库文件
+include(VENDOR.'autoload.php');
+
+
 $class_name = $obj->get('controller');
 $func = $obj->get('func');
 

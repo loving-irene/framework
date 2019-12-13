@@ -9,3 +9,4 @@ define('APP',ROOT.'app/');
 define('SYSTEM',ROOT.'system/');
 define('VIEW',APP.'admin/view/');
 define('MODEL',APP.'admin/model/');
+define('VENDOR',ROOT.'vendor/');

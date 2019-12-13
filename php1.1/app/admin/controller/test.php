@@ -6,9 +6,4 @@ class test{
     {
         vde(33);
     }
-
-    public function html()
-    {
-        return include(VIEW.'index/test.html');
-    }
 }
