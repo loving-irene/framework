@@ -6,7 +6,7 @@ include('./system/url.php');
 include('./system/constant.php');
 // 引入框架函数库
 include('./system/function.php');
-// 引入数据库
+// 引入数据抽象层
 include_once('./system/db.php');
 
 // 解析数组拿到路径

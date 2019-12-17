@@ -18,7 +18,15 @@ class index
     public function fun2()
     {
         $db = new db();
-        $pdo = $db->table('bjy_sites')->where('id = 1')->field('*')->find();
-        vde($pdo->fetch());
+        // insert
+        $res = $db->table('bjy_users')->insert(['name'=>'name1','email'=>'email1']);
+        // delete
+        $res = $db->table('bjy_users')->where(['id'=>8])->delete();
+        // update
+        $res = $db->table('bjy_users')->where(['id'=>8])->update(['name'=>'name_new','email'=>'email_new']);
+        // query one record
+        $res = $db->table('bjy_users')->where(['id'=>8])->find();
+        // query all record
+        $res = $db->table('bjy_users')->where(['status'=>1])->select();
     }
 }

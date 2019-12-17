@@ -1,17 +1,15 @@
 #### index.php文件说明
 
-与 `1.0 demo` 相比，如下部分作出了改变
+与 `1.1 demo` 相比，如下部分作出了改变
 
     <?php
     ...
-    include(APP.'admin/controller/test.php');
-    ..
-    $namesapce = 'app\admin\controller\\'.$class_name;
-    $app = new $namesapce;
+    // 引入数据抽象层
+    include_once('./system/db.php');
 
 #### 说明
 
-- `include(APP.'admin/controller/test.php');`
-    >配合应用控制器 `index.php` 中的 `use` 使用，具体说明看控制器说明文件
-- `$namesapce = 'app\admin\controller\\'.$class_name;$app = new $namesapce;`
-    >因为引入了命名空间，在使用 `app` 下的类文件时，就需要按照命名空间的写法，可看 `命名空间.md`
+- `include_once('./system/db.php');`
+    >提供框架级的数据库操作功能
+
+可以很明显的察觉到，除了 `1.0` 版本 `index.php` 初创时，编写的内容比较多，越往后，`index.php` 中基本上没有新的变动，只需要引入新的框架功能文件即可，随着框架的功能越来越多，`include` 或 `require` 会越来越多，可以进一步的封装，单独放到一个框架环境初始化文件中去处理，这样可以让 `index.php` 显得更加整洁，当然目前还不是很需要这个功能（能少做就少做咯）
