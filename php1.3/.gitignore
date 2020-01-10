@@ -1,0 +1,5 @@
+vendor
+./gitignore
+cache
+templates_c
+runtime/log
